@@ -44,7 +44,7 @@ class Game:
         if piece.getHasBomb():
             string = "unclicked-block-with-bomb"
         else:
-            string = "unopened-square"
+            string = str(piece.getNumberOfBombsAround())
         return self.images[string]
         
 

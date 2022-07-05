@@ -11,6 +11,18 @@ class Piece():
     def getClicked(self):
         return self.clicked
     
-    def getFlagger(self):
+    def getFlagged(self):
         return self.flagged
     
+    def setNeighbors(self, neighbors):
+        self.neighbors = neighbors
+        self.setNumberOfBombsAround()
+        
+    def setNumberOfBombsAround(self):
+        self.numberOfBombsAround = 0
+        for piece in self.neighbors:
+            if (piece.getHasBomb()):
+                self.numberOfBombsAround += 1                
+    
+    def getNumberOfBombsAround(self):
+        return self.numberOfBombsAround

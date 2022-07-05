@@ -1,3 +1,4 @@
+from turtle import position
 import pygame
 import os
 
@@ -16,6 +17,10 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    position = pygame.mouse.get_pos()
+                    rightClick = pygame.mouse.get_pressed()[2]
+                    self.handleClick(position, rightClick)
             self.draw()
             pygame.display.flip()
         pygame.quit()
@@ -41,13 +46,26 @@ class Game:
             self.images[fileName.split(".")[0]] = image
             
     def getImage(self, piece):
-        if piece.getHasBomb():
-            string = "unclicked-block-with-bomb"
+        string = None
+        if (piece.getClicked()):
+            pass
         else:
-            string = str(piece.getNumberOfBombsAround())
+            if piece.getFlagged():
+                string = "flag"            
+            else:
+                string = "unopened-square"
+                                
+        #if piece.getHasBomb():
+        #    string = "unclicked-block-with-bomb"
+        #else:
+        #    string = str(piece.getNumberOfBombsAround())
         return self.images[string]
-        
-
+    
+    def handleClick(self, position, rightClick):
+        index = position [1]//self.pieceSize[1], position[0]//self.pieceSize[0]
+        #print(index)
+        piece = self.board.getPiece(index)
+        self.board.handleClick(piece, rightClick)
 
 
 

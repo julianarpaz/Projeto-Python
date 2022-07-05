@@ -26,3 +26,6 @@ class Piece():
     
     def getNumberOfBombsAround(self):
         return self.numberOfBombsAround
+    
+    def toggleFlag(self):
+        self.flagged = not self.flagged

@@ -5,8 +5,7 @@ class Board:
     def __init__(self, size, probability):
         self.size = size
         self.probability = probability
-        self.setBoard()
-        
+        self.setBoard()        
 
     def setBoard(self):
         self.board = []
@@ -42,3 +41,10 @@ class Board:
     
     def getPiece(self, index):
         return self.board[index[0]][index[1]]
+    
+    def handleClick(self, piece, flag):
+        if piece.getClicked() or not flag and piece.getFlagged():
+           return 
+        if (flag):
+            piece.toggleFlag()
+            return

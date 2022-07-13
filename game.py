@@ -13,8 +13,9 @@ class Game:
         pygame.init()
         self.screen = pygame.display.set_mode(self.screenSize)
         running = True
-        while running:
+        while running:            
             for event in pygame.event.get():
+                self.board.getUpdatedBoard()
                 if event.type == pygame.QUIT:
                     running = False
                 if event.type == pygame.MOUSEBUTTONDOWN:

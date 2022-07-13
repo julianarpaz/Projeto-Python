@@ -69,6 +69,28 @@ class Board:
         return self.gameOver    
     
     def getWinner(self):
-        return self.numberOfNonBombs == self.numberOfBombsCliked
+        return self.numberOfNonBombs == self.numberOfBombsCliked    
+           
+    def getUpdatedBoard(self):        
+        print()
+        for row in range(self.getSize()[0]):
+            print(end="")
+            for col in range(self.getSize()[1]):         
+                piece = self.board[row][col]
+                result = None
+                if (piece.getClicked()):
+                    if(piece.getHasBomb()):
+                        result = "B"
+                    else:
+                        result = str(piece.getNumberOfBombsAround()) 
+                else:
+                    if piece.getFlagged():
+                        result = "F"            
+                    else:
+                        result = "U"
+                print(str(result), end=" ")
+            print()
+        print()
+        
         
                      

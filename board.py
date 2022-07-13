@@ -7,7 +7,7 @@ class Board:
         self.probability = probability
         self.gameOver = False
         self.win = False
-        self.numberOfBombsCliked = 0
+        self.numberOfBombsClicked = 0
         self.numberOfNonBombs = 0 
         self.setBoard() 
             
@@ -58,7 +58,7 @@ class Board:
         if(piece.getHasBomb()):
             self.gameOver = True
             return
-        self.numberOfBombsCliked += 1
+        self.numberOfBombsClicked += 1
         if (piece.getNumberOfBombsAround() != 0):
             return
         for neighbor in piece.getNeighbors():
@@ -69,7 +69,7 @@ class Board:
         return self.gameOver    
     
     def getWinner(self):
-        return self.numberOfNonBombs == self.numberOfBombsCliked    
+        return self.numberOfNonBombs == self.numberOfBombsClicked    
            
     def getUpdatedBoard(self):        
         print()

@@ -5,14 +5,20 @@ class Board:
     def __init__(self, size, probability):
         self.size = size
         self.probability = probability
-        self.setBoard()        
-
+        self.gameOver = False
+        self.win = False
+        self.numberOfBombsCliked = 0
+        self.numberOfNonBombs = 0 
+        self.setBoard() 
+            
     def setBoard(self):
         self.board = []
         for row in range(self.size[0]):
             row = []
             for col in range(self.size[1]):
                 hasBomb = random() < self.probability
+                if (not hasBomb):
+                    self.numberOfNonBombs +=1
                 piece = Piece(hasBomb)
                 row.append(piece)
             self.board.append(row)
@@ -48,3 +54,21 @@ class Board:
         if (flag):
             piece.toggleFlag()
             return
+        piece.click()
+        if(piece.getHasBomb()):
+            self.gameOver = True
+            return
+        self.numberOfBombsCliked += 1
+        if (piece.getNumberOfBombsAround() != 0):
+            return
+        for neighbor in piece.getNeighbors():
+            if(not neighbor.getHasBomb() and not neighbor.getClicked()):
+               self.handleClick(neighbor, False)
+            
+    def gameOver(self):
+        return self.numberOfNonBombs     
+    
+    def getWinner(self):
+        return self.numberOfNonBombs == self.numberOfBombsCliked
+        
+                     

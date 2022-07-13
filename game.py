@@ -19,7 +19,7 @@ class Game:
                     running = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     position = pygame.mouse.get_pos()
-                    rightClick = pygame.mouse.get_pressed()[2]
+                    rightClick = pygame.mouse.get_pressed()[2]                    
                     self.handleClick(position, rightClick)
             self.draw()
             pygame.display.flip()
@@ -48,17 +48,29 @@ class Game:
     def getImage(self, piece):
         string = None
         if (piece.getClicked()):
-            pass
+            if(piece.getHasBomb()):
+                string = "clicked-block-with-bomb"
+            else:
+               string = str(piece.getNumberOfBombsAround()) 
         else:
             if piece.getFlagged():
                 string = "flag"            
             else:
                 string = "unopened-square"
+                
+        #string = None
+        #if (piece.getClicked()):
+            #pass
+        #else:
+            #if piece.getFlagged():
+                #string = "flag"            
+            #else:
+                #string = "unopened-square"
                                 
         #if piece.getHasBomb():
-        #    string = "unclicked-block-with-bomb"
+            #string = "unclicked-block-with-bomb"
         #else:
-        #    string = str(piece.getNumberOfBombsAround())
+            #string = str(piece.getNumberOfBombsAround())
         return self.images[string]
     
     def handleClick(self, position, rightClick):

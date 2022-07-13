@@ -14,6 +14,9 @@ class Piece():
     def getFlagged(self):
         return self.flagged
     
+    def getNeighbors(self):
+        return self.neighbors
+    
     def setNeighbors(self, neighbors):
         self.neighbors = neighbors
         self.setNumberOfBombsAround()
@@ -29,3 +32,6 @@ class Piece():
     
     def toggleFlag(self):
         self.flagged = not self.flagged
+        
+    def click(self):
+        self.clicked = True

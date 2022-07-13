@@ -23,6 +23,8 @@ class Game:
                     self.handleClick(position, rightClick)
             self.draw()
             pygame.display.flip()
+            if(self.board.getWinner()):
+                running = False
         pygame.quit()
         
     def draw(self):

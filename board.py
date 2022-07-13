@@ -15,8 +15,11 @@ class Board:
         self.board = []
         for row in range(self.size[0]):
             row = []
-            for col in range(self.size[1]):
-                hasBomb = random() < self.probability
+            for col in range(self.size[1]):                
+                hasBomb = False
+                bomb = random()
+                if bomb < self.probability:
+                    hasBomb = True               
                 if (not hasBomb):
                     self.numberOfNonBombs +=1
                 piece = Piece(hasBomb)

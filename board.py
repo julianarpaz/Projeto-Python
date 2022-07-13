@@ -65,8 +65,8 @@ class Board:
             if(not neighbor.getHasBomb() and not neighbor.getClicked()):
                self.handleClick(neighbor, False)
             
-    def gameOver(self):
-        return self.numberOfNonBombs     
+    def getGameOver(self):
+        return self.gameOver    
     
     def getWinner(self):
         return self.numberOfNonBombs == self.numberOfBombsCliked

@@ -74,6 +74,8 @@ class Game:
         return self.images[string]
     
     def handleClick(self, position, rightClick):
+        if(self.board.getGameOver()):
+            return
         index = position [1]//self.pieceSize[1], position[0]//self.pieceSize[0]
         #print(index)
         piece = self.board.getPiece(index)

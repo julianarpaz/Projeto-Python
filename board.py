@@ -52,7 +52,7 @@ class Board:
         return self.board[index[0]][index[1]]
     
     def handleClick(self, piece, flag):
-        if piece.getClicked() or not flag and piece.getFlagged():
+        if piece.getClicked() or (not flag and piece.getFlagged()):
            return 
         if (flag):
             piece.toggleFlag()
@@ -60,8 +60,8 @@ class Board:
         piece.click()
         if(piece.getHasBomb()):
             self.gameOver = True
+            self.numberOfBombsClicked += 1            
             return
-        self.numberOfBombsClicked += 1
         if (piece.getNumberOfBombsAround() != 0):
             return
         for neighbor in piece.getNeighbors():

@@ -35,3 +35,7 @@ class Piece():
         
     def click(self):
         self.clicked = True
+        
+        
+        
+        

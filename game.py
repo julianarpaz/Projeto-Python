@@ -24,7 +24,7 @@ class Game:
                     self.handleClick(position, rightClick)
             self.draw()
             pygame.display.flip()
-            if(self.board.getWinner()):
+            if(self.board.getWinner() or self.board.getGameOver()):
                 running = False
         pygame.quit()
         
@@ -59,7 +59,7 @@ class Game:
             if piece.getFlagged():
                 string = "flag"            
             else:
-                string = "unopened-square"
+                string = "unopened-square" 
                 
         #string = None
         #if (piece.getClicked()):
@@ -73,7 +73,8 @@ class Game:
         #if piece.getHasBomb():
             #string = "unclicked-block-with-bomb"
         #else:
-            #string = str(piece.getNumberOfBombsAround())
+            #string = str(piece.getNumberOfBombsAround())               
+        
         return self.images[string]
     
     def handleClick(self, position, rightClick):

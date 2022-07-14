@@ -24,8 +24,8 @@ class Game:
                     self.handleClick(position, rightClick)
             self.draw()
             pygame.display.flip()
-            if(self.board.getWinner() or self.board.getGameOver()):
-                running = False
+            #if(self.board.getWinner() or self.board.getGameOver()):
+                #running = False            tirei pra a tela não fechar quando perder
         pygame.quit()
         
     def draw(self):
@@ -70,8 +70,8 @@ class Game:
             #else:
                 #string = "unopened-square"
                                 
-        #if piece.getHasBomb():
-            #string = "unclicked-block-with-bomb"
+        #if piece.getHasBomb():   se quiser testar que a probabilidade funciona mesmo pode descomentar dessa linha até a 76
+            #string = "unclicked-block-with-bomb"   e comentar o que tem acima, dai só aparecerá as bombas e os números vizinhos
         #else:
             #string = str(piece.getNumberOfBombsAround())               
         
